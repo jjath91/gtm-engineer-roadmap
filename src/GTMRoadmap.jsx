@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { supabase } from "./supabaseClient";
 
 const PHASES = [
   {
@@ -783,10 +784,43 @@ export default function GTMRoadmap() {
     } catch { return new Set(); }
   });
   const [showNav, setShowNav] = useState(false);
+  const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const contentRef = useRef(null);
+  const skipSync = useRef(false);
 
   const phase = PHASES.find(p => p.id === activePhase);
   const progress = Math.round((completed.size / PHASES.length) * 100);
+
+  // Load progress from Supabase
+  const loadProgress = useCallback(async (userId) => {
+    if (!supabase) return;
+    const { data } = await supabase
+      .from('user_progress')
+      .select('completed_phases')
+      .eq('user_id', userId)
+      .single();
+    if (data?.completed_phases) {
+      skipSync.current = true;
+      setCompleted(new Set(data.completed_phases));
+      localStorage.setItem('gtm-roadmap-progress', JSON.stringify(data.completed_phases));
+    }
+  }, []);
+
+  // Auth listener
+  useEffect(() => {
+    if (!supabase) { setAuthLoading(false); return; }
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) loadProgress(session.user.id);
+      setAuthLoading(false);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) loadProgress(session.user.id);
+    });
+    return () => subscription.unsubscribe();
+  }, [loadProgress]);
 
   const toggleComplete = (id) => {
     setCompleted(prev => {
@@ -796,11 +830,32 @@ export default function GTMRoadmap() {
     });
   };
 
+  // Persist to localStorage + Supabase
   useEffect(() => {
-    try {
-      localStorage.setItem('gtm-roadmap-progress', JSON.stringify([...completed]));
-    } catch {}
-  }, [completed]);
+    const arr = [...completed];
+    try { localStorage.setItem('gtm-roadmap-progress', JSON.stringify(arr)); } catch {}
+    if (skipSync.current) { skipSync.current = false; return; }
+    if (!supabase || !user) return;
+    supabase.from('user_progress').upsert({
+      user_id: user.id,
+      completed_phases: arr,
+      updated_at: new Date().toISOString()
+    });
+  }, [completed, user]);
+
+  const signIn = (provider) => {
+    if (!supabase) return;
+    supabase.auth.signInWithOAuth({
+      provider,
+      options: { redirectTo: window.location.origin }
+    });
+  };
+
+  const signOut = async () => {
+    if (!supabase) return;
+    await supabase.auth.signOut();
+    setUser(null);
+  };
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
@@ -846,6 +901,30 @@ export default function GTMRoadmap() {
           <div style={{ width: 80, height: 4, background: "rgba(255,255,255,0.06)", borderRadius: 99, overflow: "hidden" }}>
             <div style={{ width: `${progress}%`, height: "100%", background: "linear-gradient(90deg, #E8927C, #7CC6A0)", borderRadius: 99, transition: "width 0.4s ease" }} />
           </div>
+          {supabase && !authLoading && (
+            user ? (
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: 8 }}>
+                {user.user_metadata?.avatar_url && (
+                  <img src={user.user_metadata.avatar_url} alt="" style={{ width: 24, height: 24, borderRadius: 99 }} />
+                )}
+                <span style={{ fontSize: 12, color: "#99aabb", maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {user.user_metadata?.full_name || user.email}
+                </span>
+                <button onClick={signOut} style={{ background: "none", border: "1px solid rgba(255,255,255,0.1)", color: "#667788", fontSize: 11, padding: "4px 10px", borderRadius: 6, cursor: "pointer" }}>
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <div style={{ display: "flex", gap: 6, marginLeft: 8 }}>
+                <button onClick={() => signIn('github')} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#ccc", fontSize: 11, padding: "4px 10px", borderRadius: 6, cursor: "pointer" }}>
+                  GitHub
+                </button>
+                <button onClick={() => signIn('google')} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#ccc", fontSize: 11, padding: "4px 10px", borderRadius: 6, cursor: "pointer" }}>
+                  Google
+                </button>
+              </div>
+            )
+          )}
         </div>
       </header>
 
