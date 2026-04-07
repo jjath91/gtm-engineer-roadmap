@@ -777,7 +777,10 @@ function PhaseContent({ phase }) {
 export default function GTMRoadmap() {
   const [activePhase, setActivePhase] = useState(1);
   const [completed, setCompleted] = useState(() => {
-    try { return new Set(); } catch { return new Set(); }
+    try {
+      const saved = localStorage.getItem('gtm-roadmap-progress');
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch { return new Set(); }
   });
   const [showNav, setShowNav] = useState(false);
   const contentRef = useRef(null);
@@ -792,6 +795,12 @@ export default function GTMRoadmap() {
       return next;
     });
   };
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('gtm-roadmap-progress', JSON.stringify([...completed]));
+    } catch {}
+  }, [completed]);
 
   useEffect(() => {
     if (contentRef.current) contentRef.current.scrollTop = 0;
