@@ -843,12 +843,27 @@ export default function GTMRoadmap() {
     });
   }, [completed, user]);
 
-  const signIn = (provider) => {
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState('signin'); // 'signin' or 'signup'
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [authSubmitting, setAuthSubmitting] = useState(false);
+
+  const handleAuth = async (e) => {
+    e.preventDefault();
     if (!supabase) return;
-    supabase.auth.signInWithOAuth({
-      provider,
-      options: { redirectTo: window.location.origin }
-    });
+    setAuthError('');
+    setAuthSubmitting(true);
+    const { error } = authMode === 'signup'
+      ? await supabase.auth.signUp({ email: authEmail, password: authPassword })
+      : await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
+    setAuthSubmitting(false);
+    if (error) { setAuthError(error.message); return; }
+    if (authMode === 'signup') { setAuthError('Check your email to confirm your account.'); return; }
+    setShowAuthModal(false);
+    setAuthEmail('');
+    setAuthPassword('');
   };
 
   const signOut = async () => {
@@ -904,25 +919,17 @@ export default function GTMRoadmap() {
           {supabase && !authLoading && (
             user ? (
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: 8 }}>
-                {user.user_metadata?.avatar_url && (
-                  <img src={user.user_metadata.avatar_url} alt="" style={{ width: 24, height: 24, borderRadius: 99 }} />
-                )}
-                <span style={{ fontSize: 12, color: "#99aabb", maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {user.user_metadata?.full_name || user.email}
+                <span style={{ fontSize: 12, color: "#99aabb", maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {user.email}
                 </span>
                 <button onClick={signOut} style={{ background: "none", border: "1px solid rgba(255,255,255,0.1)", color: "#667788", fontSize: 11, padding: "4px 10px", borderRadius: 6, cursor: "pointer" }}>
                   Sign out
                 </button>
               </div>
             ) : (
-              <div style={{ display: "flex", gap: 6, marginLeft: 8 }}>
-                <button onClick={() => signIn('github')} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#ccc", fontSize: 11, padding: "4px 10px", borderRadius: 6, cursor: "pointer" }}>
-                  GitHub
-                </button>
-                <button onClick={() => signIn('google')} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#ccc", fontSize: 11, padding: "4px 10px", borderRadius: 6, cursor: "pointer" }}>
-                  Google
-                </button>
-              </div>
+              <button onClick={() => { setShowAuthModal(true); setAuthMode('signin'); setAuthError(''); }} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#ccc", fontSize: 11, padding: "4px 12px", borderRadius: 6, cursor: "pointer", marginLeft: 8 }}>
+                Sign in
+              </button>
             )
           )}
         </div>
@@ -1111,6 +1118,79 @@ export default function GTMRoadmap() {
           </div>
         </main>
       </div>
+
+      {/* Auth Modal */}
+      {showAuthModal && (
+        <div
+          onClick={() => setShowAuthModal(false)}
+          style={{
+            position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)",
+            display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: "#1a1a2e", border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: 12, padding: 32, width: 340, maxWidth: "90vw"
+            }}
+          >
+            <h3 style={{ margin: "0 0 4px", fontSize: 18, fontWeight: 600 }}>
+              {authMode === 'signin' ? 'Sign in' : 'Create account'}
+            </h3>
+            <p style={{ margin: "0 0 20px", fontSize: 13, color: "#667788" }}>
+              Sync your progress across devices
+            </p>
+            <form onSubmit={handleAuth}>
+              <input
+                type="email" placeholder="Email" value={authEmail}
+                onChange={e => setAuthEmail(e.target.value)} required
+                style={{
+                  width: "100%", padding: "10px 12px", background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)", borderRadius: 6, color: "#fff",
+                  fontSize: 13, marginBottom: 8, outline: "none", fontFamily: "inherit",
+                  boxSizing: "border-box"
+                }}
+              />
+              <input
+                type="password" placeholder="Password" value={authPassword}
+                onChange={e => setAuthPassword(e.target.value)} required minLength={6}
+                style={{
+                  width: "100%", padding: "10px 12px", background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)", borderRadius: 6, color: "#fff",
+                  fontSize: 13, marginBottom: 12, outline: "none", fontFamily: "inherit",
+                  boxSizing: "border-box"
+                }}
+              />
+              {authError && (
+                <p style={{ fontSize: 12, color: authError.includes('Check your email') ? '#7CC6A0' : '#E8927C', margin: "0 0 12px" }}>
+                  {authError}
+                </p>
+              )}
+              <button
+                type="submit" disabled={authSubmitting}
+                style={{
+                  width: "100%", padding: "10px", background: "#E8927C", border: "none",
+                  borderRadius: 6, color: "#fff", fontSize: 13, fontWeight: 600,
+                  cursor: authSubmitting ? "wait" : "pointer", fontFamily: "inherit",
+                  opacity: authSubmitting ? 0.7 : 1
+                }}
+              >
+                {authSubmitting ? '...' : authMode === 'signin' ? 'Sign in' : 'Sign up'}
+              </button>
+            </form>
+            <p style={{ margin: "16px 0 0", fontSize: 12, color: "#667788", textAlign: "center" }}>
+              {authMode === 'signin' ? "Don't have an account? " : "Already have an account? "}
+              <span
+                onClick={() => { setAuthMode(authMode === 'signin' ? 'signup' : 'signin'); setAuthError(''); }}
+                style={{ color: "#E8927C", cursor: "pointer" }}
+              >
+                {authMode === 'signin' ? 'Sign up' : 'Sign in'}
+              </span>
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
