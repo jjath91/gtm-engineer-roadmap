@@ -19,6 +19,16 @@ export default function Home({ onSelect }) {
       icon: '∑',
       color: '#D4915E',
       gradient: 'linear-gradient(135deg, #D4915E 0%, #E8C857 100%)'
+    },
+    {
+      id: 'cfp',
+      title: 'Certified Financial Planner',
+      subtitle: 'From Zero to Licensed Advisor',
+      description: 'Go from zero formal finance background to licensed financial advisor — Series 65, the eight CFP domains, practice building, and the CFP exam.',
+      phases: 15,
+      icon: '◈',
+      color: '#5B9AAE',
+      gradient: 'linear-gradient(135deg, #5B9AAE 0%, #6BB6A0 100%)'
     }
   ];
 
