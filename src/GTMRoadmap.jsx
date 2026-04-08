@@ -819,7 +819,7 @@ function PhaseContent({ phase }) {
   );
 }
 
-export default function GTMRoadmap() {
+export default function GTMRoadmap({ onBack }) {
   const [activePhase, setActivePhase] = useState(1);
   const [completed, setCompleted] = useState(() => {
     try {
@@ -843,6 +843,7 @@ export default function GTMRoadmap() {
       .from('user_progress')
       .select('completed_phases')
       .eq('user_id', userId)
+      .eq('curriculum', 'gtm')
       .single();
     if (data?.completed_phases) {
       skipSync.current = true;
@@ -882,6 +883,7 @@ export default function GTMRoadmap() {
     if (!supabase || !user) return;
     supabase.from('user_progress').upsert({
       user_id: user.id,
+      curriculum: 'gtm',
       completed_phases: arr,
       updated_at: new Date().toISOString()
     });
@@ -944,6 +946,9 @@ export default function GTMRoadmap() {
         zIndex: 10
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          {onBack && (
+            <button onClick={onBack} style={{ background: "none", border: "none", color: "#667788", fontSize: 13, cursor: "pointer", padding: "4px 8px" }}>← Back</button>
+          )}
           <button
             onClick={() => setShowNav(!showNav)}
             style={{ background: "none", border: "none", color: "#fff", fontSize: 20, cursor: "pointer", padding: "4px 8px", display: "flex", alignItems: "center" }}
