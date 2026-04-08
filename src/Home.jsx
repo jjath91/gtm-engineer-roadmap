@@ -92,7 +92,7 @@ export default function Home({ onSelect }) {
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
               <span style={{ fontSize: 28, color: c.color }}>{c.icon}</span>
               <div>
-                <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0, letterSpacing: -0.3 }}>{c.title}</h2>
+                <h2 style={{ fontSize: 20, fontWeight: 700, margin: 0, letterSpacing: -0.3, color: "#fff" }}>{c.title}</h2>
                 <p style={{ fontSize: 11, color: "#667788", margin: 0, letterSpacing: 0.5, textTransform: "uppercase" }}>{c.subtitle}</p>
               </div>
             </div>
