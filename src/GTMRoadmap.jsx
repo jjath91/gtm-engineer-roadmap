@@ -4,50 +4,6 @@ import { supabase } from "./supabaseClient";
 const PHASES = [
   {
     id: 1,
-    title: "Thinking Tools",
-    subtitle: "How to Think Before You Build",
-    time: "1 week",
-    icon: "◆",
-    color: "#C49BDE",
-    intro: "Before you learn any tool or language, learn how to think. The best engineers aren't the ones who memorize syntax — they're the ones who break problems apart, trace causes to their roots, and see how systems connect. These five mental tools will make everything else in this roadmap click faster.",
-    mentalModel: [
-      "First Principles = strip away assumptions and ask \"what is actually true here?\" Don't copy a solution because it worked before — understand why it worked",
-      "Systems Thinking = everything is connected. A change in one part of a system creates ripple effects. Before you touch anything, ask \"what depends on this?\"",
-      "Abstraction = hide complexity behind a simple interface. You don't need to know how an engine works to drive a car — that's abstraction. Learn to build in layers",
-      "Decomposition = break big problems into small, solvable pieces. \"Build a CRM integration\" is overwhelming. \"Read the API docs, authenticate, fetch one record\" is doable",
-      "Feedback Loops = outputs become inputs. A slow API causes retries, retries cause more load, more load makes it slower. Recognizing loops lets you break them"
-    ],
-    concepts: [
-      {
-        name: "First Principles Thinking",
-        desc: "When you hit a wall, don't ask \"what did someone else do?\" — ask \"what do I actually know is true?\" Strip the problem to its foundations and rebuild from there. Elon Musk famously applied this to battery costs: instead of accepting market prices, he asked what raw materials cost and built from there. In engineering: don't assume a library is needed — ask what problem it solves and whether your case is simpler."
-      },
-      {
-        name: "Systems Thinking",
-        desc: "See the whole, not just the parts. A Slack bot isn't just code — it's code + an API + rate limits + user expectations + error states + monitoring. When something breaks, systems thinkers ask \"what changed upstream?\" before diving into the code. Draw diagrams. Trace data flows. Ask \"what happens when this fails?\""
-      },
-      {
-        name: "Abstraction & Decomposition",
-        desc: "Abstraction: wrap complexity so others (including future you) don't have to think about it. A function named getActiveUsers() is an abstraction over a database query. Decomposition: take any big task and split it into pieces you can hold in your head. If you can't explain what a piece does in one sentence, split it further."
-      },
-      {
-        name: "Root Cause Analysis / 5 Whys",
-        desc: "When something breaks, don't fix the symptom — find the cause. Ask \"why?\" five times. The deploy failed → why? Tests didn't pass → why? A dependency was missing → why? It wasn't in the lockfile → why? Someone installed it globally instead of locally → why? No onboarding docs. Now you know what to actually fix."
-      },
-      {
-        name: "Feedback Loops",
-        desc: "Every system has them. Positive loops amplify (more users → more data → better product → more users). Negative loops stabilize (thermostat detects heat → turns off → cools down → turns on). In engineering: logging reveals errors → you fix errors → fewer alerts → more time to build → better code → fewer errors. Build systems with healthy feedback loops and break the vicious ones."
-      }
-    ],
-    resources: [
-      { name: "Thinking in Systems (Donella Meadows)", url: "https://www.chelseagreen.com/product/thinking-in-systems/", note: "The best book on systems thinking, period" },
-      { name: "First Principles: Elon Musk", url: "https://jamesclear.com/first-principles", note: "James Clear's accessible breakdown" },
-      { name: "Root Cause Analysis Explained", url: "https://asq.org/quality-resources/root-cause-analysis", note: "ASQ's practical guide to the 5 Whys and beyond" }
-    ],
-    deeper: "Study mental models more broadly — Charlie Munger's \"latticework of mental models\" is the gold standard. The Farnam Street blog (fs.blog/mental-models) catalogs dozens of them. For engineering specifically, read \"How Complex Systems Fail\" by Richard Cook — it's a short, brilliant paper that will change how you think about production systems."
-  },
-  {
-    id: 2,
     title: "Git",
     subtitle: "Think in Graphs, Not Commands",
     time: "1–2 weeks",
@@ -81,7 +37,7 @@ const PHASES = [
     deeper: "Read Pro Git chapters 1–3 (free online at git-scm.com). Covers the internals — how git stores objects, what a SHA hash is, how the staging area actually works. Fascinating but not required."
   },
   {
-    id: 3,
+    id: 2,
     title: "Terminal",
     subtitle: "Your Home Base",
     time: "1 week",
@@ -113,7 +69,7 @@ const PHASES = [
     deeper: "Learn awk, sed, piping (|), and writing bash scripts. The Missing Semester lectures 3–5 cover this. Useful for automating repetitive tasks but not urgent."
   },
   {
-    id: 4,
+    id: 3,
     title: "Internet",
     subtitle: "How It Actually Works",
     time: "1 week",
@@ -139,7 +95,7 @@ const PHASES = [
     deeper: "Read High Performance Browser Networking (hpbn.co) chapters 1–4 (free online). Covers TCP, TLS, and how data actually moves across the internet."
   },
   {
-    id: 5,
+    id: 4,
     title: "GTM Patterns",
     subtitle: "The Shapes You'll See Every Week",
     time: "½ week",
@@ -174,7 +130,7 @@ const PHASES = [
     deeper: "Enterprise Integration Patterns (enterpriseintegrationpatterns.com) is the classic reference for messaging patterns if you find yourself building a lot of webhook/queue/worker flows."
   },
   {
-    id: 6,
+    id: 5,
     title: "Security",
     subtitle: "Don't Be the Reason Things Leak",
     time: "3–4 days",
@@ -211,7 +167,7 @@ const PHASES = [
     deeper: "Learn about secret rotation, service-to-service auth (mTLS, service accounts), and infrastructure-level security. HashiCorp's Learn Vault tutorials are hands-on and well-structured."
   },
   {
-    id: 7,
+    id: 6,
     title: "Docker",
     subtitle: "\"It Works on My Machine\" — Solved",
     time: "1–2 weeks",
@@ -243,7 +199,7 @@ CMD ["python", "app.py"]       # Run your app`,
     deeper: "Learn Docker networking, volumes, multi-stage builds, and Kubernetes at a high level. Nana's Kubernetes Crash Course on YouTube is excellent."
   },
   {
-    id: 8,
+    id: 7,
     title: "CI/CD",
     subtitle: "Robots That Deploy For You",
     time: "1 week",
@@ -280,7 +236,7 @@ jobs:
     deeper: "Learn deployment strategies (blue-green, canary, rolling) and infrastructure as code (Terraform). These matter at scale but are beyond what you need now."
   },
   {
-    id: 9,
+    id: 8,
     title: "Infrastructure",
     subtitle: "Serverless vs. Containers",
     time: "3–4 days",
@@ -309,7 +265,7 @@ jobs:
     deeper: "Learn about event-driven architecture, message brokers (SQS, Pub/Sub, Kafka), and how to combine serverless and containers. The Serverless Framework docs are a practical starting point."
   },
   {
-    id: 10,
+    id: 9,
     title: "Python",
     subtitle: "From Vibes to Confidence",
     time: "2–4 weeks",
@@ -353,7 +309,7 @@ pip freeze > requirements.txt`
     deeper: "Learn decorators, generators, type hints, and especially asyncio. Async is the unlock for scale — enriching 100K leads sequentially takes hours; async makes it 20 minutes. Fluent Python by Luciano Ramalho covers it all."
   },
   {
-    id: 11,
+    id: 10,
     title: "Data Quality",
     subtitle: "Your Silent Reputation",
     time: "1 week",
@@ -385,7 +341,7 @@ assert sum(1 for r in results if r.industry) / len(results) > 0.7, \\
     deeper: "Look into contract testing, Great Expectations, and schema registries. Fundamentals of Data Engineering (O'Reilly) covers data quality in modern data stacks."
   },
   {
-    id: 12,
+    id: 11,
     title: "Observability",
     subtitle: "Catching Silent Failures",
     time: "1–2 weeks",
@@ -425,7 +381,7 @@ assert sum(1 for r in results if r.industry) / len(results) > 0.7, \\
     deeper: "Read Observability Engineering by Charity Majors. Core idea: observability isn't about dashboards — it's about asking new questions about your system without deploying new code."
   },
   {
-    id: 13,
+    id: 12,
     title: "SQL",
     subtitle: "From Querying to Storytelling",
     time: "1–2 weeks",
@@ -465,7 +421,7 @@ FROM deals;`,
     deeper: "Learn EXPLAIN plans, indexing, and database design. Use The Index, Luke (use-the-index-luke.com) is a free deep dive. For Salesforce, the SOQL/SOSL Reference is definitive. Snowflake's docs are excellent for warehouse SQL."
   },
   {
-    id: 14,
+    id: 13,
     title: "Translation",
     subtitle: "The API of You",
     time: "Ongoing",
@@ -499,11 +455,11 @@ Writes Lead.OwnerId.`,
 ];
 
 const PRIORITY_MAP = {
-  "Building automations": [5, 10, 11],
-  "Deploying things": [6, 7, 8, 9],
-  "Analyzing data": [13, 10],
-  "Supporting production": [12],
-  "Working with stakeholders": [14]
+  "Building automations": [4, 9, 10],
+  "Deploying things": [5, 6, 7, 8],
+  "Analyzing data": [12, 9],
+  "Supporting production": [11],
+  "Working with stakeholders": [13]
 };
 
 function CodeBlock({ code, lang }) {

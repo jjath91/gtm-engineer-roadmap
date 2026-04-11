@@ -1,11 +1,21 @@
 export default function Home({ onSelect }) {
   const curricula = [
     {
+      id: 'thinking-tools',
+      title: 'Thinking Tools',
+      subtitle: 'Mental Models for Builders',
+      description: 'Five foundational mental models — first principles, systems thinking, abstraction, root cause analysis, and feedback loops — plus how to build your own lattice. The meta-layer that makes every other curriculum click faster.',
+      phases: 6,
+      icon: '◆',
+      color: '#C79B9B',
+      gradient: 'linear-gradient(135deg, #C79B9B 0%, #E2B8B8 100%)'
+    },
+    {
       id: 'gtm',
       title: 'GTM Engineer',
       subtitle: 'Engineering Fluency',
       description: 'Master the engineering toolkit — Git, terminal, APIs, Python, Docker, CI/CD, and more. Go from GTM professional to technical builder.',
-      phases: 14,
+      phases: 13,
       icon: '◈',
       color: '#E8927C',
       gradient: 'linear-gradient(135deg, #E8927C 0%, #7CC6A0 100%)'
