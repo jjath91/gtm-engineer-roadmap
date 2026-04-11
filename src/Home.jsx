@@ -11,6 +11,26 @@ export default function Home({ onSelect }) {
       gradient: 'linear-gradient(135deg, #E8927C 0%, #7CC6A0 100%)'
     },
     {
+      id: 'applied-ai',
+      title: 'Applied AI Engineering',
+      subtitle: 'From Prompt to Production',
+      description: 'Ship real AI features — prompting, RAG, evals, agents, LLMOps, and a capstone. The practitioner track that turns LLM curiosity into production fluency.',
+      phases: 12,
+      icon: '◇',
+      color: '#3FA9A3',
+      gradient: 'linear-gradient(135deg, #3FA9A3 0%, #6BD4CC 100%)'
+    },
+    {
+      id: 'financial-markets',
+      title: 'Financial Markets',
+      subtitle: 'S&P Global Domain Fluency',
+      description: 'Build deep capital markets and S&P Global business literacy — ratings, indices, market data, Kensho\u2019s strategic role, and a capstone strategic memo.',
+      phases: 14,
+      icon: '$',
+      color: '#B8893E',
+      gradient: 'linear-gradient(135deg, #B8893E 0%, #D4B86A 100%)'
+    },
+    {
       id: 'genai',
       title: 'GenAI Foundations',
       subtitle: 'From Zero to Frontier Lab Fluency',
@@ -21,16 +41,6 @@ export default function Home({ onSelect }) {
       gradient: 'linear-gradient(135deg, #D4915E 0%, #E8C857 100%)'
     },
     {
-      id: 'cfp',
-      title: 'Certified Financial Planner',
-      subtitle: 'From Zero to Licensed Advisor',
-      description: 'Go from zero formal finance background to licensed financial advisor — Series 65, the eight CFP domains, practice building, and the CFP exam.',
-      phases: 16,
-      icon: '◈',
-      color: '#5B9AAE',
-      gradient: 'linear-gradient(135deg, #5B9AAE 0%, #6BB6A0 100%)'
-    },
-    {
       id: 'physics-ee',
       title: 'Physics & Electrical Engineering',
       subtitle: 'From First Principles',
@@ -39,6 +49,16 @@ export default function Home({ onSelect }) {
       icon: 'ψ',
       color: '#7B4FAB',
       gradient: 'linear-gradient(135deg, #7B4FAB 0%, #B894D4 100%)'
+    },
+    {
+      id: 'cfp',
+      title: 'Certified Financial Planner',
+      subtitle: 'From Zero to Licensed Advisor',
+      description: 'Go from zero formal finance background to licensed financial advisor — Series 65, the eight CFP domains, practice building, and the CFP exam.',
+      phases: 16,
+      icon: '◈',
+      color: '#5B9AAE',
+      gradient: 'linear-gradient(135deg, #5B9AAE 0%, #6BB6A0 100%)'
     }
   ];
 
@@ -69,7 +89,7 @@ export default function Home({ onSelect }) {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: 20,
-        maxWidth: 720,
+        maxWidth: 1080,
         width: "100%"
       }}>
         {curricula.map(c => (
