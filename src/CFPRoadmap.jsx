@@ -62,7 +62,7 @@ const PHASES = [
         name: "Exam at a Glance",
         items: [
           "130 scored questions + 10 unscored pretest questions, 180 minutes, administered by FINRA at Prometric testing centers year-round",
-          "Passing score: 72% — you need at least 94 of 130 scored questions correct",
+          "Passing score: ~70.8% — you need at least 92 of 130 scored questions correct",
           "Exam fee: $187. No sponsor required. Estimated first-time pass rate: 65–70%",
           "Prerequisites: none. You can register and schedule as soon as you're ready"
         ]
@@ -95,6 +95,25 @@ const PHASES = [
           "Weeks 9–10: Full practice exams. Take 3–5 timed, analyze weak areas, re-do missed questions. Target 75%+ before scheduling",
           "Weeks 11–12: Light review, flashcard pass, schedule and take the exam. Confidence > cramming"
         ]
+      },
+      {
+        name: "Ongoing IAR Continuing Education",
+        items: [
+          "Passing the Series 65 isn't a one-time requirement. NASAA has adopted a model rule requiring Investment Adviser Representatives to complete annual continuing education, and a growing number of states have adopted it",
+          "The requirement: 12 CE credits per year, split between 6 credits of Products and Practice and 6 credits of Ethics and Professional Responsibility",
+          "As soon as you register as an IAR, you're on the hook for this ongoing obligation. Budget roughly $100–$300/year for CE courses",
+          "Check your state securities regulator's website to confirm current CE requirements before you register — adoption varies by state"
+        ]
+      },
+      {
+        name: "Alternative Path: Series 66 + Series 7",
+        items: [
+          "The Series 66 combined with the Series 7 is an alternative path you'll see mentioned. The 66 covers both state securities law and investment adviser law, but it assumes you already hold a Series 7 (which qualifies you to sell securities products for a broker-dealer)",
+          "This path makes sense only for advisors who want to be dually registered — providing advice AND selling commission-based products",
+          "Why this path is NOT recommended for a fee-only practice: the Series 7 requires employer sponsorship by a FINRA member firm, meaning you can't take it independently as a side hustler",
+          "Fee-only practices don't require (and are actually incompatible with) commission-based product sales. Dual registration adds compliance complexity that's unnecessary for comprehensive planning",
+          "The Series 65 path is faster, cheaper, and fits the fee-only RIA model you're building toward. Worth knowing the alternative exists, but stick with Series 65"
+        ]
       }
     ],
     resources: [
@@ -114,6 +133,17 @@ const PHASES = [
     color: "#8BB4C4",
     intro: "This domain is the ethical and regulatory spine of the profession. The CFP fiduciary standard is stricter than the broker-dealer suitability standard, and understanding the difference is what separates an advisor from a salesperson. Everything you do in practice will be governed by the principles in this domain.",
     sections: [
+      {
+        name: "The 4 Es of CFP Certification",
+        items: [
+          "Before diving into Domain 1, understand how all four CFP requirements fit together. The CFP Board calls them the '4 Es' — Education, Exam, Experience, and Ethics. All four are required",
+          "Education (1st E): bachelor's degree + CFP Board-registered coursework covering the eight knowledge domains + a required capstone course. Your Poli Sci degree satisfies the bachelor's requirement",
+          "Exam (2nd E): pass the 170-question CFP exam. Offered March, July, and November each year. ~63% first-time pass rate",
+          "Experience (3rd E): 6,000 hours of qualifying financial planning experience (Standard Pathway) or 4,000 hours supervised (Apprenticeship Pathway). This is the biggest bottleneck for career changers — see Phase 14",
+          "Ethics (4th E): sign an ethics declaration, pass a background check, and agree to the CFP Board's Code of Ethics and Standards of Conduct. Ongoing — fiduciary duty applies throughout your career",
+          "Phases 3–10 cover the Education piece (the eight domains). Phase 14 covers Exam, Experience, and the capstone. Ethics is baked into this phase (Domain 1) and your daily practice"
+        ]
+      },
       {
         name: "Fiduciary Standards",
         items: [
@@ -479,12 +509,23 @@ const PHASES = [
       {
         name: "RIA Registration Steps",
         items: [
-          "Choose state of registration (your principal office location). Under $100M AUM = state-registered",
+          "Choose your state(s) of registration — your principal office state plus any state where you plan to serve more than a de minimis number of clients (typically >5 per state, but rules vary)",
           "File Form ADV Parts 1 and 2 through the IARD (Investment Adviser Registration Depository) system",
           "Draft Form ADV Part 2A ('firm brochure'): describes your services, fees, conflicts of interest, disciplinary history, background. Clients receive this at onboarding",
           "Pay state registration fees: $100–$300 annually, varies by state",
           "Obtain E&O (Errors and Omissions) insurance: $1,000–$2,500/year for a new advisor. Required or strongly recommended by most states",
           "Open a custodial relationship: Schwab, Fidelity, or Altruist (free for custodial clients). Altruist is increasingly the default for new fee-only RIAs"
+        ]
+      },
+      {
+        name: "State-Specific Registration Considerations",
+        items: [
+          "RIA registration requirements vary meaningfully by state — this is where shortcuts cause the most pain later. Research your state securities regulator's specific requirements BEFORE filing Form ADV",
+          "Every state has its own fee schedule, net worth or bonding requirements, and documentation standards. Some states require additional exams or disclosures beyond the Series 65",
+          "New York / New Jersey tri-state area: NY in particular has nuanced requirements around IAR registration, books and records, and firm-level filings. Historically a unique IAR registration regime",
+          "Multi-state: if you serve tech clients scattered across the country (likely given your network), you'll need to register as an IAR in each state where you exceed the de minimis threshold",
+          "$100M regulatory AUM threshold: once you cross it, you register with the SEC instead of individual states. Unlikely in Year 1 but worth knowing",
+          "Action item: research your specific state's registration process in Month 4, well before you plan to file. Budget extra time if you're in a stricter state"
         ]
       },
       {
@@ -497,12 +538,48 @@ const PHASES = [
         ]
       },
       {
+        name: "Day-to-Day Compliance & Fiduciary Obligations",
+        items: [
+          "Buying E&O insurance and compliance software is just the beginning — running a compliant RIA involves ongoing operational obligations required under state and federal rules",
+          "Books and records: maintain client agreements, account statements, billing records, correspondence, and advertisements for at least 5 years, with the most recent 2 years immediately accessible",
+          "Communication archiving: ALL client communications must be archived — emails, text messages, chat messages, social media DMs, even voicemails in some jurisdictions. Gmail alone is NOT compliant. Use MyRIACompliance, Smarsh, or Global Relay",
+          "The personal-texts trap: clients texting you on your personal phone about financial matters is a common compliance violation. Use a separate business number with archiving or avoid the channel",
+          "Annual compliance reviews: RIAs must conduct annual reviews of operations, policies, and procedures. File Form ADV amendments within 90 days of fiscal year end. Deliver updated Form ADV Part 2 to clients annually",
+          "Personal securities transactions: your own trading is subject to reporting and often pre-clearance requirements. Maintain a personal securities transaction log. This is why personal active trading is incompatible with running an RIA",
+          "Fiduciary documentation: every recommendation must be in the client's best interest, not just suitable. Document your rationale for key decisions. Conflicts of interest must be disclosed in writing",
+          "If your state regulator audits you (which happens on a rolling basis), you must produce all of the above on request"
+        ]
+      },
+      {
         name: "Outside Business Activity",
         items: [
-          "Critical: check your S&P Global employment agreement for outside business activity (OBA) restrictions BEFORE doing anything else",
+          "Critical: check your S&P Global employment agreement for outside business activity (OBA) restrictions BEFORE doing anything else — ideally before you take the Series 65",
           "Most large financial data firms require disclosure and approval of outside advisory work",
-          "File the necessary paperwork with your employer's compliance department early — approval can take weeks",
-          "Conflicts to watch for: clients who overlap with S&P data coverage, use of company resources, time allocation during work hours"
+          "File the necessary paperwork with your employer's compliance department early — approval can take weeks or months",
+          "Conflicts to watch for: clients who overlap with S&P data coverage, use of company resources, time allocation during work hours",
+          "If approval is delayed or denied, see the contingency options in Phase 16"
+        ]
+      },
+      {
+        name: "Client Acquisition Strategy",
+        items: [
+          "Passing exams and registering an RIA are the easy parts. Getting paying clients is the hard part, and most new advisors underestimate how long the ramp takes",
+          "Niche positioning: your biggest edge is your tech network. Tech professionals with RSUs, ISOs, NSOs, and ESPP grants are underserved — most generalist advisors don't understand equity compensation deeply. Position yourself specifically as the equity compensation specialist",
+          "Content creation: post 2–3x/week on LinkedIn about RSU vesting strategies, ISO/NSO tax optimization, 10b5-1 plans, concentrated stock diversification. Start a simple blog or newsletter. First 10 posts may get no traction; consistent 6–12 month posting builds a pipeline",
+          "Referral partnerships: CPAs and tax preparers who serve tech professionals (tech clients often need both and CPAs rarely do planning), estate attorneys, other fee-only advisors at capacity",
+          "Pro bono work through approved organizations serves double duty: builds CFP experience hours (up to 500 count) AND gives you real client practice with lower stakes. Foundation for Financial Planning, Savvy Ladies are options",
+          "Realistic Year 1 client count — Months 1–6: 0–2 paying clients (you're still studying). Months 7–9: 2–5 clients. Months 10–12: 5–15 clients",
+          "Realistic Year 1 revenue: $15,000–$50,000 depending on fee model and effort. Year 2 typically sees 2–3x growth as referrals compound"
+        ]
+      },
+      {
+        name: "Three Budget Scenarios",
+        items: [
+          "Rather than a single wide range, match your investment to your level of commitment. Each scenario assumes 12 months of activity",
+          "Lean Start ($8,000–$10,000): Series 65 only (defer CFP education to Year 2), budget prep provider (Achievable/ExamFX), hourly/project-based model, no RIA custody, free tool trials, minimal filings. Designed to test the waters and build experience hours",
+          "Standard Path ($14,000–$17,000) — RECOMMENDED: Kaplan Series 65 prep, mid-tier CFP program (Kaplan self-paced or Boston Institute of Finance cohort), basic functional tech stack (RightCapital, Wealthbox, basic compliance), own RIA with state registration and E&O, FPA/NAPFA membership, simple website",
+          "Full Launch ($20,000–$25,000): Everything in Standard plus premium CFP review (Dalton), complete tech stack (eMoney or MoneyGuidePro, Orion, full compliance suite), XY Planning Network membership, professional website with content marketing, Bloomberg Market Concepts",
+          "Add a $2,000–$3,000 contingency buffer on top of any scenario for retakes, extended coursework, or extra compliance consulting. The Standard Path budget assumes a clean run"
         ]
       }
     ],
@@ -620,10 +697,10 @@ const PHASES = [
     id: 14,
     title: "CFP Exam Preparation",
     subtitle: "The Gold Standard Credential",
-    time: "Months 9–12",
+    time: "Months 9–15+",
     icon: "★",
     color: "#C4A55E",
-    intro: "The CFP mark is the gold standard credential in comprehensive financial planning. Series 65 gets you legally licensed; CFP signals deep competence and opens doors to higher-net-worth clients and referral networks. This phase is intensive review after completing the CFP Board-registered education coursework.",
+    intro: "The CFP mark is the gold standard credential in comprehensive financial planning. Series 65 gets you legally licensed; CFP signals deep competence and opens doors to higher-net-worth clients and referral networks. This phase is intensive review after completing the CFP Board-registered education coursework — but the real bottleneck isn't the exam itself. It's the capstone course and the 6,000-hour experience requirement. Plan for 12–15+ months, not 9–12.",
     sections: [
       {
         name: "Exam Details",
@@ -633,7 +710,45 @@ const PHASES = [
           "Passing score determined by CFP Board; historically ~64–68% correct",
           "First-time pass rate: approximately 64–67%. Not easy. Disciplined preparation is required",
           "Exam fee: $825–$1,025 depending on registration timing",
-          "Prerequisites: completed CFP Board-registered coursework + bachelor's degree (your Poli Sci degree qualifies)"
+          "Prerequisites: completed CFP Board-registered coursework + capstone course + bachelor's degree (your Poli Sci degree qualifies)"
+        ]
+      },
+      {
+        name: "Realistic CFP Exam Timing",
+        items: [
+          "The honest answer on CFP timing: March of the year AFTER you start (Month 14–15) is realistic. November of Year 1 (Month 11) is a stretch that only works if education coursework + capstone both finish cleanly with no delays",
+          "Why people miss their target window: the CFP Board-registered coursework covers eight knowledge domains. Even cohort-based programs take 9–12 months of consistent effort. Self-paced programs stretch longer when life gets in the way",
+          "The capstone course (see next section) adds another 40–80 hours AFTER coursework completes, and it's often only offered on a fixed schedule — not on-demand",
+          "Plan for March Year 2. If you're ready earlier, move to November Year 1. Don't plan for November and scramble to make it work",
+          "Slipping your exam window is NOT failure — it's the default outcome for most candidates. The people who rush into November often fail and retake in March anyway. Build in the buffer upfront"
+        ]
+      },
+      {
+        name: "The Capstone Course Requirement",
+        items: [
+          "Beyond the eight knowledge domain courses, the CFP Board requires a capstone course — 'Financial Plan Development' — that integrates everything into a comprehensive client case",
+          "This course must be completed BEFORE you sit for the exam. You can't register for the exam without a capstone transcript on file",
+          "Time commitment: 40–80 hours of concentrated case work. You'll build a full financial plan for a hypothetical client, applying the 7-step planning process end to end",
+          "The pacing constraint: capstone is often scheduled intermittently — many providers only offer 3–4 cohorts per year on fixed dates. If you finish domain coursework in month 8 but the next capstone starts in month 10, you've lost 2 months",
+          "Check capstone schedules from your education provider BEFORE you start coursework. Reverse-engineer your timeline from when the capstone is offered, not from when domain courses finish",
+          "Plan review and client presentation components — the capstone often requires you to present your plan, which is deliberate practice for real client meetings. Treat it as training, not a hoop"
+        ]
+      },
+      {
+        name: "The Biggest Bottleneck: The 6,000-Hour Experience Requirement",
+        items: [
+          "Passing the exam without the experience hours means you become a 'CFP candidate' — you can't actually use the CFP marks until hours are logged and verified. This is the biggest career-changer trap",
+          "Standard Pathway: 6,000 hours of qualifying financial planning experience. Apprenticeship Pathway: 4,000 hours under direct CFP supervision with specific client-facing requirements",
+          "What COUNTS: direct financial planning work with individual clients, paraplanning, financial analysis that directly supports planning recommendations, client service with substantive planning content, pro bono planning through approved programs (up to 500 hours)",
+          "What does NOT count: revenue operations work at S&P Global (even though it's at a financial data firm), general corporate finance, data analysis without client-facing planning context, marketing or sales without planning substance. Confirm with the CFP Board if uncertain — don't assume",
+          "The Part-Time Math Problem: at 20 hours/week of qualifying work, 6,000 hours takes 5.77 years. At 10 hours/week, 11.5 years. This is why experience — not the exam — is the real multi-year commitment",
+          "Acceleration Strategy 1 — Front-load: maximize paying client work in Year 1 of your RIA. Every billable planning hour counts toward the 6,000",
+          "Acceleration Strategy 2 — Pro bono (up to 500 hours): Foundation for Financial Planning pro bono program, Savvy Ladies, Financial Planning Association pro bono days. Caps at 500 hours of the 6,000 but counts from day one",
+          "Acceleration Strategy 3 — FPA Residency Program: intensive 1-week program that counts for ~500 experience hours plus structured mentorship",
+          "Acceleration Strategy 4 — Paraplanner role: part-time or freelance paraplanning for an established CFP. You build hours faster AND get mentorship. Several XY Planning Network members hire contract paraplanners",
+          "Acceleration Strategy 5 — Apprenticeship Pathway: 4,000 hours instead of 6,000, but requires direct CFP supervision and specific competencies. Only viable if you can get formally supervised by a CFP",
+          "Sequencing guidance: start logging hours Day 1 of your RIA. Treat 'complete 6,000 hours' as a 3–5 year initiative that runs PARALLEL to exam prep, not sequential. Passing the exam in Month 14 and finishing hours in Year 4 is a perfectly normal timeline",
+          "Track hours from day one — don't rely on reconstruction. CFP Board audits a percentage of applications and the documentation requirements are specific"
         ]
       },
       {
@@ -643,16 +758,6 @@ const PHASES = [
           "Kaplan Schweser CFP Review ($800–$1,800): good balance of depth and efficiency. Strong practice exams",
           "Brett Danko CFP Review ($1,000–$2,000): live class format with a practicing CFP instructor. Good if you learn better from lectures",
           "Zahn Associates ($800–$1,500): solid option with a long track record"
-        ]
-      },
-      {
-        name: "Experience Requirement",
-        items: [
-          "6,000 hours of professional experience in financial planning (or 4,000 apprenticeship hours). Can be completed before or after the exam",
-          "Can be completed within 10 years before the exam or 5 years after",
-          "Full-time = roughly 3 years. Part-time at 20 hours/week = roughly 5.7 years",
-          "Qualifying work: direct planning at your RIA or another firm, support roles (financial analysis, client service, paraplanning), some client-facing financial analysis at S&P Global may qualify",
-          "Track hours from day one — don't rely on reconstruction. CFP Board audits a percentage of applications"
         ]
       },
       {
@@ -727,6 +832,70 @@ const PHASES = [
       { name: "XY Planning Network", url: "https://www.xyplanningnetwork.com/", note: "Modern fee-only network" }
     ],
     deeper: "Once you're established, the highest-leverage growth investment is almost always developing a narrow niche and becoming the go-to expert for it. 'So Good They Can't Ignore You' (Cal Newport) and 'The Referral Code' (Larry Kendall) are two of the best books on how to build a specialty practice that attracts clients instead of chasing them. Aim for 100 ideal clients over 5 years rather than 500 random ones."
+  },
+  {
+    id: 16,
+    title: "Contingency Planning",
+    subtitle: "When Things Don't Go to Plan",
+    time: "As Needed",
+    icon: "⚑",
+    color: "#B47C6B",
+    intro: "Everything in Phases 1–15 assumes a clean run: you pass exams on the first try, your employer approves outside business activity quickly, coursework finishes on schedule, and clients show up. Reality rarely cooperates. This phase is the explicit contingency plan for the three most likely setbacks — and a framework for handling whatever else goes wrong. The goal isn't to eliminate risk; it's to make sure no single setback derails the whole roadmap.",
+    sections: [
+      {
+        name: "What if you fail the Series 65?",
+        items: [
+          "First: it happens. The pass rate is ~72%, which means roughly 1 in 4 candidates retakes. A fail is a delay, not a disqualification",
+          "Mandatory 30-day waiting period before you can retest. Use it — don't re-book immediately and study the same material the same way",
+          "Request your NASAA score report. It breaks down your performance by content area, showing exactly where you lost points. Most failures cluster in 1–2 weak domains, not across the board",
+          "Switch question banks. If you used Kaplan the first time, use Achievable or ExamFX for retake prep. Different question styles reveal different gaps. Fresh material prevents pattern memorization",
+          "Budget impact: $187 retake fee + 4–8 additional weeks of study. The real cost is the 1–2 month slip in your overall timeline, not the money",
+          "Do not schedule the retake until your practice exam scores are consistently 80%+. Retaking before you're ready wastes another $187 and compounds the delay",
+          "Mental reframe: the Series 65 is harder than it looks precisely because it's entry-level. A retake is common enough that no future client or employer will ever ask about it. The only question that matters is whether you hold the license, not how many tries it took"
+        ]
+      },
+      {
+        name: "What if S&P Global denies or delays OBA approval?",
+        items: [
+          "Outside business activity approval from your employer is the single biggest non-exam risk to this roadmap. If compliance says no — or takes six months to say yes — you need options",
+          "Option 1 — Delay the launch: finish Series 65, continue CFP coursework, and defer RIA registration until OBA is resolved or until you leave S&P Global. Your licensing progress doesn't expire, and the study time still counts",
+          "Option 2 — Education-only mode: if you can't take paying clients, you can still build your content platform, newsletter, and LinkedIn presence as a financial educator (not an advisor). Don't give personalized advice — stay strictly educational. This builds the audience for when you can launch",
+          "Option 3 — Pro bono volunteer planning: Foundation for Financial Planning, Savvy Ladies, and FPA pro bono days let you do real planning work without charging fees. Usually doesn't conflict with OBA restrictions because there's no compensation. Bonus: counts toward CFP experience hours",
+          "Option 4 — Affiliate with an existing RIA: join an established fee-only firm as a W-2 employee, contractor, or IAR under their registration. You trade independence for speed-to-market and mentorship. Several XY Planning Network members hire CFP candidates in this structure",
+          "Option 5 — Defer to post-S&P Global: treat Phases 1–10 as the work you do while employed, and Phase 11 (RIA launch) as the thing you do when you leave. Cleanest path if OBA is a hard no",
+          "Have the OBA conversation EARLY — ideally before you start Phase 1. Finding out in Month 10 that you can't launch is the worst possible version of this problem. Get the written policy, talk to compliance informally, and read your employment agreement carefully"
+        ]
+      },
+      {
+        name: "What if CFP coursework takes longer than expected?",
+        items: [
+          "The 9–12 month timeline for CFP education assumes 10–15 hours/week of consistent study across eight domains plus capstone. Job stress, life events, or underestimating course depth routinely stretches this to 14–18 months",
+          "Push the exam window: if you're not ready for November Year 1, target March Year 2. If March Year 2 is tight, target July. The exam isn't going anywhere",
+          "Use the slip productively: every week you're not sitting the CFP exam is a week you can log experience hours, serve clients, write content, or build referral relationships. The experience requirement (6,000 hours) is the larger constraint anyway",
+          "Remember the capstone is the pacing constraint, not domain coursework. If the next available capstone cohort is 3 months out, that's 3 months you can't exam-prep anyway — use them for other roadmap work instead of stressing",
+          "Don't skip domains to hit a timeline. A rushed exam attempt with weak domain coverage is the most expensive version of 'saving time' — you pay $825, lose months of momentum, and retake anyway",
+          "Financial impact of stretching CFP by 6 months: usually zero if you're employed during the stretch. The only real cost is delayed access to the CFP marks, which isn't what gets your first 20 clients anyway (your niche positioning is)"
+        ]
+      },
+      {
+        name: "General Principles for Handling Setbacks",
+        items: [
+          "Protect your core anchors: Series 65 licensed, RIA registered, first paying clients. Everything else is sequencing. If a setback threatens a core anchor, prioritize the anchor. If it only delays non-core work, absorb the delay and keep moving",
+          "Quarterly plan reviews: every 3 months, compare your actual progress to the roadmap. Adjust timelines based on reality, not aspiration. A plan you update quarterly survives contact with reality; a plan you set in stone breaks on first impact",
+          "The $2,000–$3,000 contingency buffer from Phase 11's budget scenarios exists for exactly this phase. Retake fees, extra CE credits, additional compliance consulting, one more month of software subscriptions — setbacks cost money AND time",
+          "Setback triage framework: (1) Is my license at risk? (2) Is my registration at risk? (3) Is my income at risk? If no to all three, it's a schedule problem, not a roadmap problem — just re-sequence",
+          "Don't make reactive career decisions. If something goes wrong, give yourself 2 weeks before deciding to abandon the roadmap, pivot, or double-down. Most setbacks feel catastrophic for 48 hours and routine after 2 weeks",
+          "Talk to people who've done this. The XY Planning Network community, NAPFA's Genesis (younger advisor) group, and CFP subreddits are full of people who've failed an exam, had OBA denied, or taken 18 months longer than planned — and are now running successful practices. The setback is not the story; the recovery is"
+        ]
+      }
+    ],
+    resources: [
+      { name: "NASAA Series 65 Retake Info", url: "https://www.nasaa.org/exams-study-materials/nasaa-exams/", note: "Official retake procedures" },
+      { name: "Foundation for Financial Planning", url: "https://foundationforfinancialplanning.org/pro-bono/", note: "Pro bono program (counts toward CFP hours)" },
+      { name: "XY Planning Network", url: "https://www.xyplanningnetwork.com/", note: "Community for fee-only advisors, setback support" },
+      { name: "Savvy Ladies", url: "https://www.savvyladies.org/", note: "Pro bono planning for women in need" }
+    ],
+    deeper: "The most dangerous assumption in any career-change roadmap is that you'll execute it perfectly. You won't. The second most dangerous assumption is that a setback means the roadmap is wrong. Usually it just means the timeline was optimistic. The advisors who successfully transition into fee-only practice aren't the ones who never fail an exam or never have OBA issues — they're the ones who had a contingency plan, absorbed the setback, and kept moving. Write your contingencies down BEFORE you need them, while you're thinking clearly. When something goes wrong in Month 8, you don't want to be designing a pivot under stress."
   }
 ];
 
@@ -735,7 +904,8 @@ const PRIORITY_MAP = {
   "CFP exam track": [3, 4, 6, 7, 8, 9, 10, 14],
   "Serving tech clients": [8, 13, 12],
   "Building the practice": [11, 12, 15],
-  "Deepening investment expertise": [7, 13]
+  "Deepening investment expertise": [7, 13],
+  "When things go wrong": [16]
 };
 
 function CodeBlock({ code }) {

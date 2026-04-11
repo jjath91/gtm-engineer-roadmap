@@ -25,10 +25,20 @@ export default function Home({ onSelect }) {
       title: 'Certified Financial Planner',
       subtitle: 'From Zero to Licensed Advisor',
       description: 'Go from zero formal finance background to licensed financial advisor — Series 65, the eight CFP domains, practice building, and the CFP exam.',
-      phases: 15,
+      phases: 16,
       icon: '◈',
       color: '#5B9AAE',
       gradient: 'linear-gradient(135deg, #5B9AAE 0%, #6BB6A0 100%)'
+    },
+    {
+      id: 'physics-ee',
+      title: 'Physics & Electrical Engineering',
+      subtitle: 'From First Principles',
+      description: 'Build undergraduate-level physics fluency paired with hands-on electrical engineering — math foundations, EM, quantum, embedded systems, RF, and a capstone project.',
+      phases: 15,
+      icon: 'ψ',
+      color: '#7B4FAB',
+      gradient: 'linear-gradient(135deg, #7B4FAB 0%, #B894D4 100%)'
     }
   ];
 

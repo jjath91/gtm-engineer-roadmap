@@ -3,6 +3,7 @@ import Home from './Home'
 import GTMRoadmap from './GTMRoadmap'
 import GenAIRoadmap from './GenAIRoadmap'
 import CFPRoadmap from './CFPRoadmap'
+import PhysicsEERoadmap from './PhysicsEERoadmap'
 
 function App() {
   const [view, setView] = useState('home')
@@ -10,6 +11,7 @@ function App() {
   if (view === 'gtm') return <GTMRoadmap onBack={() => setView('home')} />
   if (view === 'genai') return <GenAIRoadmap onBack={() => setView('home')} />
   if (view === 'cfp') return <CFPRoadmap onBack={() => setView('home')} />
+  if (view === 'physics-ee') return <PhysicsEERoadmap onBack={() => setView('home')} />
   return <Home onSelect={setView} />
 }
 
